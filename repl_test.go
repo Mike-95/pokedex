@@ -12,7 +12,7 @@ func TestCleanInput(t *testing.T) {
 			expected: []string{},
 		},
 		{
-			input:    "  hello  ",
+			input:    "  Hello  ",
 			expected: []string{"hello"},
 		},
 		{
@@ -20,14 +20,14 @@ func TestCleanInput(t *testing.T) {
 			expected: []string{"hello", "world"},
 		},
 		{
-			input:    "  HellO  World  ",
+			input:    "  HellO  World ",
 			expected: []string{"hello", "world"},
 		},
 	}
 	for _, c := range cases {
 		actual := cleanInput(c.input)
 		if len(actual) != len(c.expected) {
-			t.Errorf("lengths don't match: '%v', vs '%v'", actual, c.expected)
+			t.Errorf("lengths don't match: '%v', vs '%v'", len(actual), len(c.expected))
 			continue
 		}
 		for i := range actual {
